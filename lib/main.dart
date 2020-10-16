@@ -1,64 +1,81 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+
+
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Мое приложение',
+      home: BottomNavBar(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+class BottomNavBar extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _BottomNavBarState createState() => _BottomNavBarState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+final Color navIconColor = Colors.white;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _BottomNavBarState extends State<BottomNavBar> {
+  int _page = 0;
+  GlobalKey _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      bottomNavigationBar: CurvedNavigationBar(
+        key: _bottomNavigationKey,
+        index: 0,
+        height: 50.0,
+        items: <Widget>[
+          Icon(Icons.explore, size: 30, color: navIconColor),
+          Icon(Icons.line_weight, size: 30, color: navIconColor),
+          Icon(Icons.message, size: 30, color: navIconColor),
+          Icon(Icons.history, size: 30, color: navIconColor),
+          Icon(Icons.perm_identity, size: 30, color: navIconColor),
+        ],
+        backgroundColor: Colors.white,
+        color: Colors.green,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 300),
+        onTap: (index) {
+          setState(() {
+            _controller.animateToPage(index,
+                duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+          });
+        },
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        child: PageView(
+          controller: _controller, // assign it to PageView
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Center(
+              child: Text('Вкладка 1'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Center(
+              child: Text('Вкладка 2'),
+            ),
+            Center(
+              child: Text('Вкладка 3'),
+            ),
+            Center(
+              child: Text('Вкладка 4'),
+            ),
+            Center(
+              child: Text('Вкладка '),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
     );
   }
 }
+
+final _controller = PageController();
