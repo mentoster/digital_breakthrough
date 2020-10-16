@@ -1,4 +1,4 @@
-#Fri Oct 16 18:23:39 MSK 2020
+#Fri Oct 16 19:23:06 MSK 2020
 base.0=D\:\\YandexDisk\\GitHub\\Flutter\\digital_breakthrough\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -1,8 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:digital_hack/profile.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 void main() => runApp(MyApp());
 
@@ -68,9 +66,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Center(
               child: Text('Вкладка 4'),
             ),
-            Center(
-              child: Text('Вкладка '),
-            ),
+            Profile() //пример вкладки
           ],
         ),
       ),
