@@ -52,5 +52,11 @@
 			]
 		}
 	],
-	"notes": ["exmaple"]
+	"notes": [
+		{
+			"id": 1,
+			"body": "some example",
+			"postId": 1
+		}
+	]
 }
