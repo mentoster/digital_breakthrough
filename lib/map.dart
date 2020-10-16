@@ -12,14 +12,18 @@ class MapVkld extends StatefulWidget {
 
 class _MapVkldState extends State<MapVkld> {
   Future<List<Test>> _getTest() async {
-    var tstData = await http
-        .get("https://my-json-server.typicode.com/typicode/demo/posts");
+    var tstData = await http.get(
+        "https://my-json-server.typicode.com/mentoster/digital_breakthrough/departments");
     var jsonData = json.decode(tstData.body);
     List<Test> tests = [];
-    for (var tst in jsonData) {
-      Test test = Test(tst["id"], tst["title"]);
-      tests.add(test);
-    }
+    // for (var dep in jsonData) {
+    //   for (var names in jsonData) {
+    print("21. map -> jsonData['бухгалтерия']: " +
+        jsonData['бухгалтерия'].toString());
+    Test test = Test(0, jsonData['бухгалтерия']);
+    tests.add(test);
+    //   }
+    // }
     return tests;
   }
 
