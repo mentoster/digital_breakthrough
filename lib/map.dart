@@ -16,14 +16,14 @@ class _MapVkldState extends State<MapVkld> {
         "https://my-json-server.typicode.com/mentoster/digital_breakthrough/departments");
     var jsonData = json.decode(tstData.body);
     List<Test> tests = [];
-    // for (var dep in jsonData) {
-    //   for (var names in jsonData) {
-    print("21. map -> jsonData['бухгалтерия']: " +
-        jsonData['бухгалтерия'].toString());
-    Test test = Test(0, jsonData['бухгалтерия']);
-    tests.add(test);
-    //   }
-    // }
+    // print(
+    //     "19. map -> jsonData: " + jsonData[0]["company"][0]["name"].toString());
+    for (var tst in jsonData[0]["company"]) {
+      Test test = Test(0, jsonData[0]["company"][0]["name"]);
+      print("23. map -> jsonData: " +
+          jsonData[0]["company"][0]["name"].toString());
+      tests.add(test);
+    }
     return tests;
   }
 
