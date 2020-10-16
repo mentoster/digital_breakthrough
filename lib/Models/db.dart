@@ -30,7 +30,5 @@ class Deparament {
   String url;
   List<Profiles> profiles;
   List<Tasks> tasks;
-  Deparament(this.id, this.name, this.url);
-  // this.profiles, this.tasks);
-
+  Deparament(this.id, this.name, this.url, this.profiles, this.tasks);
 }

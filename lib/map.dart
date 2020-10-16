@@ -18,20 +18,20 @@ class _MapVkldState extends State<MapVkld> {
     var jsonData = json.decode(tstData.body);
     List<Deparament> deparaments = [];
     for (var dpr in jsonData[0]["company"]) {
-      print("test1");
       List<Profiles> profiles = [];
       for (var profile in jsonData[0]["company"][0]["profiles"]) {
-        print(profile);
-        profiles.add(profile);
+        Profiles prf = Profiles(profile["id"], profile["name"], profile["img"],
+            profile["position"], profile["phone"], profile["email"]);
+        profiles.add(prf);
       }
-      print("test2");
       List<Tasks> tasks = [];
-      for (var tsk in jsonData[0]["company"][0]["tasks"][0]) {
+      for (var task in jsonData[0]["company"][0]["tasks"]) {
+        Tasks tsk = Tasks(task["id"], task["deadline"], task["title"],
+            task["tags"], task["color"], task["body"]);
         tasks.add(tsk);
       }
       Deparament deparament =
-          Deparament(int.parse(dpr["id"]), dpr["name"], dpr["url"]);
-      print("test");
+          Deparament(dpr["id"], dpr["name"], dpr["url"], profiles, tasks);
       deparaments.add(deparament);
     }
     return deparaments;
@@ -61,7 +61,7 @@ class _MapVkldState extends State<MapVkld> {
                       // leading: CircleAvatar(
                       //   backgroundImage: NetworkImage(imageUrl),
                       // ),
-                      title: Text(snapshot.data[index].name),
+                      title: Text(snapshot.data[0].tasks[0].title),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 7.0, horizontal: 5.0),
