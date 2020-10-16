@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:digital_hack/map.dart';
 import 'package:digital_hack/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:digital_hack/tasks.dart';
 
 void main() => runApp(MyApp());
 
@@ -56,9 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
-            Center(
-              child: Text('Вкладка 2'),
-            ),
+            FruitList(),
             Center(
               child: Text('Вкладка 3'),
             ),
