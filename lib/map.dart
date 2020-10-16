@@ -19,9 +19,7 @@ class _MapVkldState extends State<MapVkld> {
     // print(
     //     "19. map -> jsonData: " + jsonData[0]["company"][0]["name"].toString());
     for (var tst in jsonData[0]["company"]) {
-      Test test = Test(0, jsonData[0]["company"][0]["name"]);
-      print("23. map -> jsonData: " +
-          jsonData[0]["company"][0]["name"].toString());
+      Test test = Test(0, tst["name"]);
       tests.add(test);
     }
     return tests;
@@ -51,17 +49,17 @@ class _MapVkldState extends State<MapVkld> {
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        // leading: CircleAvatar(
-                        //   backgroundImage: NetworkImage(imageUrl),
-                        // ),
-                        title: Text(snapshot.data[index].title),
-                        trailing: Icon(Icons.keyboard_arrow_right),
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 7.0, horizontal: 5.0),
-                        onTap: () {
-                          // do something
-                        },
-                      );
+                          // leading: CircleAvatar(
+                          //   backgroundImage: NetworkImage(imageUrl),
+                          // ),
+                          title: Text(snapshot.data[index].title),
+                          trailing: Icon(Icons.keyboard_arrow_right),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 7.0, horizontal: 5.0),
+                          onTap: () {
+                            // do something
+                          },
+                          onLongPress: () {});
                     },
                   );
                 }
