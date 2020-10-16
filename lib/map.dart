@@ -16,20 +16,22 @@ class _MapVkldState extends State<MapVkld> {
     var tstData = await http.get(
         "https://my-json-server.typicode.com/mentoster/digital_breakthrough/departments");
     var jsonData = json.decode(tstData.body);
-    //     "19. map -> jsonData: " + jsonData[0]["company"][0]["name"].toString());
     List<Deparament> deparaments = [];
     for (var dpr in jsonData[0]["company"]) {
+      print("test1");
       List<Profiles> profiles = [];
-      for (var profile in jsonData["profiles"][0]) {
-        print("test");
+      for (var profile in jsonData[0]["company"][0]["profiles"]) {
+        print(profile);
         profiles.add(profile);
       }
+      print("test2");
       List<Tasks> tasks = [];
-      for (var tsk in dpr["tasks"][0]) {
+      for (var tsk in jsonData[0]["company"][0]["tasks"][0]) {
         tasks.add(tsk);
       }
       Deparament deparament =
-          Deparament(0, dpr["name"], dpr["url"], profiles, tasks);
+          Deparament(int.parse(dpr["id"]), dpr["name"], dpr["url"]);
+      print("test");
       deparaments.add(deparament);
     }
     return deparaments;
