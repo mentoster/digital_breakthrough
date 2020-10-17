@@ -18,8 +18,7 @@ class _MapVkldState extends State<MapVkld> {
     var jsonData = json.decode(tstData.body);
     List<Deparament> deparaments = [];
     for (var dpr in jsonData[0]["company"]) {
-      List<Profiles> profiles = [];
-      for (var profile in jsonData[0]["company"][0]["profiles"]) {
+      List<Profiles> profiles = []      for (var profile in jsonData[0]["company"][dpr["id"]]["profiles"]) {
         List<Tasks> tasks = [];
         if (profile["tasks"] != null)
           for (var tsk in profile["tasks"]) {
@@ -63,34 +62,32 @@ class _MapVkldState extends State<MapVkld> {
   }
 
   TreeView tree(List<Deparament> snapshot) {
-    return TreeView(parentList: [
-      Parent(
-        parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
-        childList: ChildList(
-          children: <Widget>[
-            _treePrint(snapshot[0].name, snapshot[0].profiles),
-            _treePrint(snapshot[1].name, snapshot[1].profiles),
-            _treePrint(snapshot[2].name, snapshot[2].profiles),
-            _treePrint(snapshot[3].name, snapshot[3].profiles),
-          ],
-        ),
-      ),
-    ]);
+    return TreeView(
+      parentList: [
+        Parent(
+            parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
+            childList: ChildList(
+              children: <Widget>[
+                for (var i in snapshot) _treePrint(i.name, i.profiles),
+              ],
+            )),
+      ],
+    );
   }
 
   Parent _treePrint(String parent, List<dynamic> childs) {
     return Parent(
-      parent: _buildCard(parent, 20),
+      parent: _buildCard(parent, 40),
       childList: ChildList(
         children: List.generate(childs.length, (index) {
-          if (childs is List<Profiles>) {
-            return _treePrint(childs[index].name, childs[index].tasks);
-          } else if (childs is List<Tasks>) {
-            print("89. map -> childs[index].title: " +
-                childs[index].title.toString());
-            _buildCard(childs[index].title, 40);
-          } else
-            return Text('');
+          print(childs[index].name);
+          return Parent(
+              parent: _buildCard(childs[index].name, 80),
+              childList: ChildList(
+                children: <Widget>[
+                  for (var i in childs[index].tasks) _buildCard(i.title, 120),
+                ],
+              ));
         }),
       ),
     );
