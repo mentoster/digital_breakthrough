@@ -54,57 +54,38 @@ class _MapVkldState extends State<MapVkld> {
                 ),
               );
             } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                      // leading: CircleAvatar(
-                      //   backgroundImage: NetworkImage(imageUrl),
-                      // ),
-                      title: Text(snapshot.data[0].tasks[0].title),
-                      trailing: Icon(Icons.keyboard_arrow_right),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 7.0, horizontal: 5.0),
-                      onTap: () {
-                        // do something
-                      },
-                      onLongPress: () {});
-                },
-              );
-              // print("what");
-              // print("41. map -> snapshot.data: " + snapshot.data.toString());
-              // return tree(snapshot.data);
+              return tree(snapshot.data);
             }
           }),
     );
   }
 
-  TreeView tree(AsyncSnapshot snapshot) {
-    print(snapshot.data);
-    // return TreeView(
-    //             parentList: [
-    //               Parent(
-    //                 parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
-    //                 childList: ChildList(
-    //                   children: <Widget>[
-    //                     Parent(
-    //                       parent: _buildCard('documents', 20),
-    //                       childList: ChildList(
-    //                         children: <Widget>[
-    //                           _buildCard('Resume.docx', 40),
-    //                           _buildCard('Billing-Info.docx', 40),
-    //                         ],
-    //                       ),
-    //                     ),
-    //                     _buildCard('MeetingReport.xls', 20),
-    //                     _buildCard('MeetingReport.pdf', 20),
-    //                     _buildCard('Demo.zip', 20),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ],
-    //           );
-    return null;
+  TreeView tree(List<Deparament> snapshot) {
+    // print(snapshot[].tasks[0].title);
+    return TreeView(parentList: [
+      Parent(
+        parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
+        childList: ChildList(
+          children: <Widget>[
+            _treePrint(snapshot[0].name, snapshot[0].tasks),
+            _treePrint(snapshot[1].name, snapshot[1].tasks),
+            _treePrint(snapshot[2].name, snapshot[2].tasks),
+            _treePrint(snapshot[3].name, snapshot[3].tasks),
+          ],
+        ),
+      ),
+    ]);
+  }
+
+  Parent _treePrint(String parent, List<dynamic> childs) {
+    return Parent(
+      parent: _buildCard(parent, 20),
+      childList: ChildList(
+        children: List.generate(childs.length, (index) {
+          return _buildCard(childs[index].title, 40);
+        }),
+      ),
+    );
   }
 
   // ignore: unused_element
