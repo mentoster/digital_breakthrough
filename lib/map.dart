@@ -35,7 +35,7 @@ class _MapVkldState extends State<MapVkld> {
           Deparament(dpr["id"], dpr["name"], dpr["url"], profiles);
       deparaments.add(deparament);
     }
-
+    print(deparaments);
     return deparaments;
   }
 
@@ -86,7 +86,7 @@ class _MapVkldState extends State<MapVkld> {
       parent: _buildCard(parent, 40),
       childList: ChildList(
         children: List.generate(childs.length, (index) {
-          print(childs[index].name);
+          // print(childs[index].name);
           return Parent(
               parent: _buildCard(childs[index].name, 80),
               childList: ChildList(
