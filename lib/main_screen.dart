@@ -46,8 +46,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
-            FruitList(),
-            MaterialApp(
+            Center(
+              child: Text('Вкладка 4'),
+            ),
+            MainPage(),
+            Center(
+              child: Text('Вкладка 4'),
+            ),
+            /*MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Chat',
               theme: ThemeData(
@@ -55,7 +61,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 accentColor: Color(0xFFFEF9EB),
               ),
               home: HomeScreen(),
-            ),
+            ),*/
             Center(
               child: Text('Вкладка 4'),
             ),
