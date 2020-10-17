@@ -24,8 +24,9 @@ class MyApp extends StatelessWidget {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Container(
+                new Container(
                     child: new TextFormField(
+                      initialValue: "@admin",
                       decoration: new InputDecoration(labelText: "Почта"),
                       keyboardType: TextInputType.emailAddress,
                       maxLines: 1,
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
                   ),
                   new Container(
                     child: new TextFormField(
+                      initialValue: "123456",
                       decoration: new InputDecoration(labelText: "Пароль"),
                       obscureText: true,
                       maxLines: 1,
