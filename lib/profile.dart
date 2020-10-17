@@ -24,10 +24,11 @@ class Profile extends StatelessWidget {
 
   Future<List<Deparament>> _getJson() async {
     print("_getJson");
-    var tstData = await http.get(
-        "https://my-json-server.typicode.com/mentoster/digital_breakthrough/departments");
-    var jsonData = json.decode(tstData.body);
+    var tstData = await http.get("https://fakegames.herokuapp.com/");
+    var jsn = json.decode(tstData.body);
     List<Deparament> deparaments = [];
+    print(jsn["departments"]);
+    var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
       List<Profiles> profiles = [];
       for (var profile in jsonData[0]["company"][dpr["id"]]["profiles"]) {

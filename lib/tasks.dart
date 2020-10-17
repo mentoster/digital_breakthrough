@@ -1,14 +1,34 @@
 import 'package:flutter/material.dart';
 
-class FruitList extends StatelessWidget{
-  final List<String> name = [ "Программирование", "Финансы", "Отдел кадров", "Кадр отделов", "Да" ];
-  final List<String> info = [ "Разработать", "Посчитать", "Нанять", "Отнять", "Нет" ];
-  final List<String> date = [ "01.01.2011", "01.01.2011", "01.01.2011", "01.01.2011", "01.01.2011" ];
-  final List<String> moreinfo = [ "Первым делом вам нужно выбрать подходящий момент",
-                                  "Лучше всего договориться встретиться в отдельном кабинете", 
-                                  "Вы без отвлекающих факторов сможете объяснить задачу", 
-                                  "Еще хуже, если вы рискнете поймать и загрузить подчиненного где-нибудь в коридоре", 
-                                  "От каких методов лучше отказаться вообще" ];
+class FruitList extends StatelessWidget {
+  final List<String> name = [
+    "Программирование",
+    "Финансы",
+    "Отдел кадров",
+    "Кадр отделов",
+    "Да"
+  ];
+  final List<String> info = [
+    "Разработать",
+    "Посчитать",
+    "Нанять",
+    "Отнять",
+    "Нет"
+  ];
+  final List<String> date = [
+    "01.01.2011",
+    "01.01.2011",
+    "01.01.2011",
+    "01.01.2011",
+    "01.01.2011"
+  ];
+  final List<String> moreinfo = [
+    "Первым делом вам нужно выбрать подходящий момент",
+    "Лучше всего договориться встретиться в отдельном кабинете",
+    "Вы без отвлекающих факторов сможете объяснить задачу",
+    "Еще хуже, если вы рискнете поймать и загрузить подчиненного где-нибудь в коридоре",
+    "От каких методов лучше отказаться вообще"
+  ];
   /*void add_task(string name, string info, string date,string more){
     this.name.add(name);
     this.info.add(info);
@@ -19,18 +39,17 @@ class FruitList extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: ListView.builder(
-            itemBuilder: _buildFruitItem,
-            itemCount: name.length,
-          )
-        )
-    );
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: ListView.builder(
+              itemBuilder: _buildFruitItem,
+              itemCount: name.length,
+            )));
   }
-  Widget _buildFruitItem( BuildContext context, int index ){
+
+  Widget _buildFruitItem(BuildContext context, int index) {
     return Center(
       child: Card(
         color: Colors.green[100],
@@ -38,11 +57,12 @@ class FruitList extends StatelessWidget{
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.account_tree_rounded),
+              leading: Icon(Icons.work),
               title: Text(name[index]),
               subtitle: Text(info[index]),
               onTap: () {
-                Navigator.push(context,
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (context) => blu(context, index),
                   ),
@@ -67,19 +87,19 @@ class FruitList extends StatelessWidget{
       ),
     );
   }
-  
-  Widget blu(BuildContext context, int index){
+
+  Widget blu(BuildContext context, int index) {
     return Scaffold(
       body: Center(
-        child: Text(
-          moreinfo[index],
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        )
-        
-      ),
+          child: Text(
+        moreinfo[index],
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {Navigator.pop(context);},
+        onPressed: () {
+          Navigator.pop(context);
+        },
         child: const Icon(Icons.backspace),
       ),
       /*body: Container(
