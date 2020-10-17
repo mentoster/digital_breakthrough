@@ -20,20 +20,22 @@ class _MapVkldState extends State<MapVkld> {
     for (var dpr in jsonData[0]["company"]) {
       List<Profiles> profiles = [];
       for (var profile in jsonData[0]["company"][0]["profiles"]) {
+        List<Tasks> tasks = [];
+        if (profile["tasks"] != null)
+          for (var tsk in profile["tasks"]) {
+            Tasks tsknew = Tasks(tsk["id"], tsk["deadline"], tsk["title"],
+                tsk["tags"], tsk["color"], tsk["body"]);
+            tasks.add(tsknew);
+          }
         Profiles prf = Profiles(profile["id"], profile["name"], profile["img"],
-            profile["position"], profile["phone"], profile["email"]);
+            profile["position"], profile["phone"], profile["email"], tasks);
         profiles.add(prf);
       }
-      List<Tasks> tasks = [];
-      for (var task in jsonData[0]["company"][0]["tasks"]) {
-        Tasks tsk = Tasks(task["id"], task["deadline"], task["title"],
-            task["tags"], task["color"], task["body"]);
-        tasks.add(tsk);
-      }
       Deparament deparament =
-          Deparament(dpr["id"], dpr["name"], dpr["url"], profiles, tasks);
+          Deparament(dpr["id"], dpr["name"], dpr["url"], profiles);
       deparaments.add(deparament);
     }
+
     return deparaments;
   }
 
@@ -61,16 +63,15 @@ class _MapVkldState extends State<MapVkld> {
   }
 
   TreeView tree(List<Deparament> snapshot) {
-    // print(snapshot[].tasks[0].title);
     return TreeView(parentList: [
       Parent(
         parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
         childList: ChildList(
           children: <Widget>[
-            _treePrint(snapshot[0].name, snapshot[0].tasks),
-            _treePrint(snapshot[1].name, snapshot[1].tasks),
-            _treePrint(snapshot[2].name, snapshot[2].tasks),
-            _treePrint(snapshot[3].name, snapshot[3].tasks),
+            _treePrint(snapshot[0].name, snapshot[0].profiles),
+            _treePrint(snapshot[1].name, snapshot[1].profiles),
+            _treePrint(snapshot[2].name, snapshot[2].profiles),
+            _treePrint(snapshot[3].name, snapshot[3].profiles),
           ],
         ),
       ),
@@ -82,7 +83,14 @@ class _MapVkldState extends State<MapVkld> {
       parent: _buildCard(parent, 20),
       childList: ChildList(
         children: List.generate(childs.length, (index) {
-          return _buildCard(childs[index].title, 40);
+          if (childs is List<Profiles>) {
+            return _treePrint(childs[index].name, childs[index].tasks);
+          } else if (childs is List<Tasks>) {
+            print("89. map -> childs[index].title: " +
+                childs[index].title.toString());
+            _buildCard(childs[index].title, 40);
+          } else
+            return Text('');
         }),
       ),
     );

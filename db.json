@@ -1,61 +1,62 @@
 {
-	"departments": [
-		{
-			"company": [
-				{
-					"id": 0,
-					"name": "бухгалтерия",
-					"img": "",
-					"tasks": [
-						{
-							"id": 0,
-							"deadline": "18.10.2020",
-							"title": "Оформить и разослать приказ о надбавках к зарплате",
-							"tags": "документы",
-							"color": "yellow",
-							"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
-						}
-					],
-					"profiles": [
-						{
-							"id": 0,
-							"name": "Иван Иванов",
-							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
-							"position": "бухгалтер",
-							"phone": "8(916)-205-35-80",
-							"email": "NeoMatrix@mos.ru"
-						}
-					]
-				},
-				{
-					"id": 1,
-					"name": "отдел кадров",
-					"img": "",
-					"tasks": [{}],
-					"profiles": [{}]
-				},
-				{
-					"id": 2,
-					"name": "Служба делопроизводства",
-					"img": "",
-					"tasks": [{}],
-					"profiles": [{}]
-				},
-				{
-					"id": 3,
-					"name": "Планово-экономический отдел",
-					"img": "",
-					"tasks": [{}],
-					"profiles": [{}]
-				}
-			]
-		}
-	],
-	"notes": [
-		{
-			"id": 1,
-			"body": "some example",
-			"postId": 1
-		}
-	]
+ "departments": [
+  {
+   "company": [
+    {
+     "id": 0,
+     "name": "бухгалтерия",
+     "img": "",
+
+     "profiles": [
+      {
+       "id": 0,
+       "name": "Иван Иванов",
+       "img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+       "position": "бухгалтер",
+       "phone": "8(916)-205-35-80",
+       "email": "NeoMatrix@mos.ru",
+       "tasks": [
+        {
+         "id": 0,
+         "deadline": "18.10.2020",
+         "name": "Оформить и разослать приказ о надбавках к зарплате",
+         "tags": "документы",
+         "color": "yellow",
+         "body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 1,
+     "name": "отдел кадров",
+     "img": "",
+     "tasks": [{}],
+     "profiles": [{}]
+    },
+    {
+     "id": 2,
+     "name": "Служба делопроизводства",
+     "img": "",
+     "tasks": [{}],
+     "profiles": [{}]
+    },
+    {
+     "id": 3,
+     "name": "Планово-экономический отдел",
+     "img": "",
+     "tasks": [{}],
+     "profiles": [{}]
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "id": 1,
+   "body": "some example",
+   "postId": 1
+  }
+ ]
 }

@@ -4,16 +4,6 @@ class Test {
   Test(this.id, this.title);
 }
 
-class Profiles {
-  int id;
-  String name;
-  String img;
-  String position;
-  String phone;
-  String email;
-  Profiles(this.id, this.name, this.img, this.position, this.phone, this.email);
-}
-
 class Tasks {
   int id;
   String deadline;
@@ -24,11 +14,22 @@ class Tasks {
   Tasks(this.id, this.deadline, this.title, this.tags, this.color, this.body);
 }
 
+class Profiles {
+  int id;
+  String name;
+  String img;
+  String position;
+  String phone;
+  String email;
+  List<Tasks> tasks;
+  Profiles(this.id, this.name, this.img, this.position, this.phone, this.email,
+      this.tasks);
+}
+
 class Deparament {
   int id;
   String name;
   String url;
   List<Profiles> profiles;
-  List<Tasks> tasks;
-  Deparament(this.id, this.name, this.url, this.profiles, this.tasks);
+  Deparament(this.id, this.name, this.url, this.profiles);
 }
