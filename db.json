@@ -1,62 +1,119 @@
 {
- "departments": [
-  {
-   "company": [
-    {
-     "id": 0,
-     "name": "бухгалтерия",
-     "img": "",
+	"departments": [
+		{
+			"company": [
+				{
+					"id": 0,
+					"name": "бухгалтерия",
+					"img": "",
 
-     "profiles": [
-      {
-       "id": 0,
-       "name": "Иван Иванов",
-       "img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
-       "position": "бухгалтер",
-       "phone": "8(916)-205-35-80",
-       "email": "NeoMatrix@mos.ru",
-       "tasks": [
-        {
-         "id": 0,
-         "deadline": "18.10.2020",
-         "title": "Оформить и разослать приказ о надбавках к зарплате",
-         "tags": "документы",
-         "color": "yellow",
-         "body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": 1,
-     "name": "отдел кадров",
-     "img": "",
-     "tasks": [{}],
-     "profiles": [{}]
-    },
-    {
-     "id": 2,
-     "name": "Служба делопроизводства",
-     "img": "",
-     "tasks": [{}],
-     "profiles": [{}]
-    },
-    {
-     "id": 3,
-     "name": "Планово-экономический отдел",
-     "img": "",
-     "tasks": [{}],
-     "profiles": [{}]
-    }
-   ]
-  }
- ],
- "notes": [
-  {
-   "id": 1,
-   "body": "some example",
-   "postId": 1
-  }
- ]
+					"profiles": [
+						{
+							"id": 0,
+							"name": "Иван Иванов",
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+							"position": "бухгалтер",
+							"phone": "8(916)-205-35-80",
+							"email": "NeoMatrix@mos.ru",
+							"tasks": [
+								{
+									"id": 0,
+									"deadline": "18.10.2020",
+									"title": "Оформить и разослать приказ о надбавках к зарплате",
+									"tags": "документы",
+									"color": "yellow",
+									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": 1,
+					"name": "Проверяющие Хакатон",
+					"img": "",
+					"tasks": [{}],
+					"profiles": [
+						{
+							"id": 0,
+							"name": "Админ Админович",
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+							"position": "к сожелению не админ",
+							"phone": "8(916)-415-71-35",
+							"email": "NewUser@mos.ru",
+							"tasks": [
+								{
+									"id": 0,
+									"deadline": "18.10.2020",
+									"title": "Оформить и разослать приказ о надбавках к зарплате",
+									"tags": "документы",
+									"color": "yellow",
+									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": "Департамент цифрового развития",
+					"img": "",
+					"tasks": [{}],
+					"profiles": [
+						{
+							"id": 0,
+							"name": "Лилия Олеговна",
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+							"position": "Заместитель руководителя департамента",
+							"phone": "(473) 212-65-03",
+							"email": "lpodoprihina@govvrn.ru",
+							"tasks": [
+								{
+									"id": 0,
+									"deadline": "18.10.2020",
+									"title": "Провести хакатон",
+									"tags": "документы",
+									"color": "yellow",
+									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": 3,
+					"name": "Планово-экономический отдел",
+					"img": "",
+					"tasks": [{}],
+					"profiles": [
+						{
+							"id": 0,
+							"name": "Дмитрий Макаров",
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+							"position": "Profi своего дела",
+							"phone": "8(916)-703-57-87",
+							"email": "FreeMail@mos.ru",
+							"tasks": [
+								{
+									"id": 0,
+									"deadline": "18.10.2020",
+									"title": "Оформить и разослать приказ о надбавках к зарплате",
+									"tags": "документы",
+									"color": "yellow",
+									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"notes": [
+		{
+			"id": 1,
+			"body": "some example",
+			"postId": 1
+		}
+	]
 }
