@@ -6,7 +6,9 @@ void main() => runApp(new MaterialApp(
       home: new MyApp(),
     ));
 
+
 class MyApp extends StatelessWidget {
+
   String _email;
   String _password;
   final _sizeTextBlack = const TextStyle(fontSize: 20.0, color: Colors.black);

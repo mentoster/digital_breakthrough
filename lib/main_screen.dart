@@ -12,10 +12,11 @@ class BottomNavBar extends StatefulWidget {
 
 final Color navIconColor = Colors.white;
 
+var id = 0;
+
 class _BottomNavBarState extends State<BottomNavBar> {
   int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
-            FruitList(),
+            // FruitList(),
             MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Chat',
@@ -59,7 +60,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Center(
               child: Text('Вкладка 4'),
             ),
-            Profile(1, "Проверяющие Хакатон") //пример вкладки
+            Profile(id, "бухгалтерия") //пример вкладки
           ],
         ),
       ),

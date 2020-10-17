@@ -1,24 +1,26 @@
 import 'package:digital_hack/Models/db.dart';
+import 'package:digital_hack/profile.dart';
+import 'package:digital_hack/main_screen.dart' as globals;
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:tree_view/tree_view.dart';
 
 class MapVkld extends StatefulWidget {
+  PageController _controller;
   @override
   _MapVkldState createState() => _MapVkldState();
 }
 
 class _MapVkldState extends State<MapVkld> {
+  // get json with data
   Future<List<Deparament>> _getJson() async {
     var tstData = await http.get("https://fakegames.herokuapp.com/");
     // print(tstData);
     var jsn = json.decode(tstData.body);
     // print(jsonData);
     List<Deparament> deparaments = [];
-    print(jsn["departments"]);
     var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
       List<Profiles> profiles = [];
@@ -38,10 +40,10 @@ class _MapVkldState extends State<MapVkld> {
           Deparament(dpr["id"], dpr["name"], dpr["url"], profiles);
       deparaments.add(deparament);
     }
-    print(deparaments);
     return deparaments;
   }
 
+  PageController _controller;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +115,7 @@ class _MapVkldState extends State<MapVkld> {
                     Text(name, style: TextStyle(fontWeight: FontWeight.w500)),
                 trailing: IconButton(
                   onPressed: () {
-                    // Interactivity or events codes here
+                    Profile(0, "бух");
                   },
                   splashRadius: 25,
                   icon: Icon(
