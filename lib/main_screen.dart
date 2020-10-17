@@ -46,7 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
-            FruitList(),
+            MainPage(),
             MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Chat',
