@@ -76,7 +76,7 @@ class _MapVkldState extends State<MapVkld> {
     return TreeView(
       parentList: [
         Parent(
-            parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0),
+            parent: _buildCard("ООО <<МОЯ ОБОРОНА>>", 0, false, 0, "0"),
             childList: ChildList(
               children: <Widget>[
                 for (var i in snapshot) _treePrint(i.name, i.profiles),
@@ -88,15 +88,17 @@ class _MapVkldState extends State<MapVkld> {
 
   Parent _treePrint(String parent, List<dynamic> childs) {
     return Parent(
-      parent: _buildCard(parent, 40),
+      parent: _buildCard(parent, 40, false, 0, "0"),
       childList: ChildList(
         children: List.generate(childs.length, (index) {
           // print(childs[index].name);
           return Parent(
-              parent: _buildCard(childs[index].name, 80),
+              parent: _buildCard(
+                  childs[index].name, 80, true, childs[index].id, parent),
               childList: ChildList(
                 children: <Widget>[
-                  for (var i in childs[index].tasks) _buildCard(i.title, 120),
+                  for (var i in childs[index].tasks)
+                    _buildCard(i.title, 120, false, 0, "0"),
                 ],
               ));
         }),
@@ -105,7 +107,9 @@ class _MapVkldState extends State<MapVkld> {
   }
 
   // ignore: unused_element
-  Widget _buildCard(String name, double leftMargin) => SizedBox(
+  Widget _buildCard(String name, double leftMargin, bool profile, int id,
+          String position) =>
+      SizedBox(
         child: Card(
           margin: EdgeInsets.fromLTRB(leftMargin, 1, 0, 1),
           child: Column(
@@ -115,7 +119,17 @@ class _MapVkldState extends State<MapVkld> {
                     Text(name, style: TextStyle(fontWeight: FontWeight.w500)),
                 trailing: IconButton(
                   onPressed: () {
-                    Profile(0, "бух");
+                    if (profile) {
+                      // print(id, position);
+                      print(id);
+                      print(position);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Profile(id, position),
+                        ),
+                      );
+                    }
                   },
                   splashRadius: 25,
                   icon: Icon(

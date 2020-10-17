@@ -18,6 +18,7 @@ class Profile extends StatelessWidget {
   String position = 'бухгалтерия';
   String number = '8(916)-205-35-80';
   String email = 'NeoMatrix@mos.ru';
+  bool isMyProfile;
   Profile(this.id, this.position) {
     print("constructor");
   }
@@ -55,9 +56,7 @@ class Profile extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return Container(
-              child: Center(
-                child: Text("Загрузка..."),
-              ),
+              color: Colors.white,
             );
           } else {
             for (var i in snapshot.data) {

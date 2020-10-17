@@ -37,7 +37,7 @@ class RecentChats extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
+                    color: chat.unread ? Color(0x33808080) : Colors.white,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       bottomRight: Radius.circular(20.0),
@@ -102,7 +102,8 @@ class RecentChats extends StatelessWidget {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    'New',
+                                    'Новая',
+                                    textAlign: TextAlign.start,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 12.0,

@@ -23,7 +23,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        index: 0,
+        index: _page,
         height: 50.0,
         items: <Widget>[
           Icon(Icons.explore, size: 30, color: navIconColor),
@@ -45,6 +45,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       body: Container(
         child: PageView(
+          onPageChanged: (int pg) {
+            _page = pg;
+          },
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
