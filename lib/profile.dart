@@ -5,7 +5,7 @@ class Profile extends StatelessWidget {
   int id = 0;
   // imagie profile
   final AssetImage ico = AssetImage(
-    'assets/images/profile.png',
+    'assets/images/pic.png',
   );
   String name = 'Иван Иванов';
   String position = 'бухгалтер';
