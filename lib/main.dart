@@ -1,4 +1,5 @@
 import 'package:digital_hack/main_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,9 +7,7 @@ void main() => runApp(new MaterialApp(
       home: new MyApp(),
     ));
 
-
 class MyApp extends StatelessWidget {
-
   String _email;
   String _password;
   final _sizeTextBlack = const TextStyle(fontSize: 20.0, color: Colors.black);
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                new Container(
+                  new Container(
                     child: new TextFormField(
                       initialValue: "@admin",
                       decoration: new InputDecoration(labelText: "Почта"),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:digital_hack/map.dart';
 import 'package:digital_hack/profile.dart';
 import 'package:digital_hack/tasks.dart';
 import 'package:digital_hack/chat/screens/home_screen.dart';
