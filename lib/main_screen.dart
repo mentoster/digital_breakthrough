@@ -59,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Center(
               child: Text('Вкладка 4'),
             ),
-            Profile() //пример вкладки
+            Profile(1, "Проверяющие Хакатон") //пример вкладки
           ],
         ),
       ),

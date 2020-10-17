@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:digital_hack/Models/db.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:tree_view/tree_view.dart';
 
 class Profile extends StatelessWidget {
   //user data
@@ -8,10 +15,68 @@ class Profile extends StatelessWidget {
     'assets/images/profile.png',
   );
   String name = 'Иван Иванов';
-  String position = 'бухгалтер';
+  String position = 'бухгалтерия';
   String number = '8(916)-205-35-80';
   String email = 'NeoMatrix@mos.ru';
-  Profile();
+  Profile(this.id, this.position) {
+    print("constructor");
+  }
+
+  Future<List<Deparament>> _getJson() async {
+    print("_getJson");
+    var tstData = await http.get(
+        "https://my-json-server.typicode.com/mentoster/digital_breakthrough/departments");
+    var jsonData = json.decode(tstData.body);
+    List<Deparament> deparaments = [];
+    for (var dpr in jsonData[0]["company"]) {
+      List<Profiles> profiles = [];
+      for (var profile in jsonData[0]["company"][dpr["id"]]["profiles"]) {
+        List<Tasks> tasks = [];
+        if (profile["tasks"] != null)
+          for (var tsk in profile["tasks"]) {
+            Tasks tsknew = Tasks(tsk["id"], tsk["deadline"], tsk["title"],
+                tsk["tags"], tsk["color"], tsk["body"]);
+            tasks.add(tsknew);
+          }
+        Profiles prf = Profiles(profile["id"], profile["name"], profile["img"],
+            profile["position"], profile["phone"], profile["email"], tasks);
+        profiles.add(prf);
+      }
+      Deparament deparament =
+          Deparament(dpr["id"], dpr["name"], dpr["url"], profiles);
+      deparaments.add(deparament);
+    }
+    return deparaments;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: _getJson(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.data == null) {
+            return Container(
+              child: Center(
+                child: Text("Загрузка..."),
+              ),
+            );
+          } else {
+            print(snapshot.data);
+            for (var i in snapshot.data) {
+              if (i.name == position) {
+                print(i.profiles[id].name);
+                return _buildcard(
+                    i.profiles[id].name,
+                    i.profiles[id].position,
+                    i.profiles[id].phone,
+                    i.profiles[id].email,
+                    i.profiles[id].img);
+              }
+            }
+          }
+        });
+  }
+
   Center cenText(String text, TextStyle textStyle) {
     return Center(
       child: Text(
@@ -21,74 +86,73 @@ class Profile extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child: Card(
-        margin: EdgeInsets.only(bottom: 15),
-        child: Column(
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: ico,
-                radius: 70,
-              ),
+// card
+  Card _buildcard(String name, String position, String phoneNumber,
+      String email, String urlico) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 15),
+      child: Column(
+        children: [
+          Center(
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(urlico),
+              radius: 70,
             ),
-            ListTile(
-              title: cenText(
-                  name, TextStyle(fontWeight: FontWeight.w500, fontSize: 25)),
-              subtitle: cenText(
-                  position, TextStyle(color: Colors.grey[500], fontSize: 20)),
+          ),
+          ListTile(
+            title: cenText(
+                name, TextStyle(fontWeight: FontWeight.w500, fontSize: 25)),
+            subtitle: cenText(
+                position, TextStyle(color: Colors.grey[500], fontSize: 20)),
+          ),
+          ListTile(
+            title: Text(phoneNumber,
+                style: TextStyle(fontWeight: FontWeight.w500)),
+            leading: Icon(
+              Icons.contact_phone,
+              color: Colors.green[500],
             ),
-            ListTile(
-              title: Text('8-(916)-205-35-80',
-                  style: TextStyle(fontWeight: FontWeight.w500)),
-              leading: Icon(
-                Icons.contact_phone,
-                color: Colors.green[500],
-              ),
+          ),
+          ListTile(
+            title: Text(email),
+            leading: Icon(
+              Icons.contact_mail,
+              color: Colors.green[500],
             ),
-            ListTile(
-              title: Text('WakeUpNeo@mos.ru'),
-              leading: Icon(
-                Icons.contact_mail,
-                color: Colors.green[500],
-              ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text('Написать...'),
+            onTap: () {
+              // changeoage(2);
+            },
+            leading: Icon(
+              Icons.message,
+              color: Colors.green[500],
             ),
-            Divider(),
-            ListTile(
-              title: Text('Написать...'),
-              onTap: () {
-                // changeoage(2);
-              },
-              leading: Icon(
-                Icons.message,
-                color: Colors.green[500],
-              ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text('Текущие задания'),
+            onTap: () {
+              // changeoage(2);
+            },
+            leading: Icon(
+              Icons.description,
+              color: Colors.green[500],
             ),
-            Divider(),
-            ListTile(
-              title: Text('Текущие задания'),
-              onTap: () {
-                // changeoage(2);
-              },
-              leading: Icon(
-                Icons.description,
-                color: Colors.green[500],
-              ),
+          ),
+          ListTile(
+            title: Text('Выполненные задания'),
+            onTap: () {
+              // changeoage(2);
+            },
+            leading: Icon(
+              Icons.done,
+              color: Colors.green[500],
             ),
-            ListTile(
-              title: Text('Выполненные задания'),
-              onTap: () {
-                // changeoage(2);
-              },
-              leading: Icon(
-                Icons.done,
-                color: Colors.green[500],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
