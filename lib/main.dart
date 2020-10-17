@@ -3,6 +3,7 @@ import 'package:digital_hack/map.dart';
 import 'package:digital_hack/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_hack/history.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -62,7 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Center(
               child: Text('Вкладка 3'),
             ),
-            FruitList(),
+            SearchList(),
             Profile() //пример вкладки
           ],
         ),

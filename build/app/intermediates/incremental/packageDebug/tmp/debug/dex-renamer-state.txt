@@ -1,4 +1,4 @@
-#Sat Oct 17 00:49:20 MSK 2020
+#Sat Oct 17 18:56:21 MSK 2020
 base.0=C\:\\hackathon\\VsProjects\\flutter_pr\\digital_breakthrough\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
