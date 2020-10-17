@@ -7,7 +7,7 @@ class CategorySelector extends StatefulWidget {
 
 class _CategorySelectorState extends State<CategorySelector> {
   int selectedIndex = 0;
-  final List<String> categories = ['Сообщения', 'Groups', 'Requests'];
+  final List<String> categories = ['Сообщения'];
   @override
   Widget build(BuildContext context) {
     return Container(

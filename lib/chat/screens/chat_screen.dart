@@ -82,6 +82,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   _buildMessageComposer() {
+    String msg = "";
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       height: 70.0,
@@ -97,7 +98,9 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: TextField(
               textCapitalization: TextCapitalization.sentences,
-              onChanged: (value) {},
+              onChanged: (value) {
+                msg = value;
+              },
               decoration: InputDecoration.collapsed(
                 hintText: 'Send a message...',
               ),
@@ -107,7 +110,26 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: Icon(Icons.send),
             iconSize: 25.0,
             color: Theme.of(context).primaryColor,
-            onPressed: () {},
+            onPressed: () {
+              messages.add(Message(
+                sender: widget.user,
+                time: DateTime.now().hour.toString() +
+                    ":" +
+                    DateTime.now().minute.toString(),
+                text: msg,
+                isLiked: false,
+                unread: false,
+              ));
+              print(messages.last.text);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChatScreen(
+                    user: widget.user,
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -155,7 +177,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     topRight: Radius.circular(30.0),
                   ),
                   child: ListView.builder(
-                    reverse: true,
+                    controller: ScrollController(
+                        initialScrollOffset: messages.length * 85.0),
                     padding: EdgeInsets.only(top: 15.0),
                     itemCount: messages.length,
                     itemBuilder: (BuildContext context, int index) {

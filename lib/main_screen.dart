@@ -46,6 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller, // assign it to PageView
           children: <Widget>[
             MapVkld(),
+<<<<<<< HEAD
             Center(
               child: Text('Вкладка 4'),
             ),
@@ -54,6 +55,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
               child: Text('Вкладка 4'),
             ),
             /*MaterialApp(
+=======
+            MainPage(),
+            MaterialApp(
+>>>>>>> master
               debugShowCheckedModeBanner: false,
               title: 'Chat',
               theme: ThemeData(
@@ -65,7 +70,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Center(
               child: Text('Вкладка 4'),
             ),
-            Profile() //пример вкладки
+            Profile(1, "Проверяющие Хакатон") //пример вкладки
           ],
         ),
       ),
