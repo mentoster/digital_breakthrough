@@ -1,8 +1,10 @@
+import 'package:digital_hack/history.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:digital_hack/profile.dart';
 import 'package:digital_hack/tasks.dart';
 import 'package:digital_hack/chat/screens/home_screen.dart';
+import 'package:digital_hack/map.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -45,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: PageView(
           controller: _controller, // assign it to PageView
           children: <Widget>[
-            // MapVkld(),
+            MapVkld(),
             MainPage(),
             MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -56,9 +58,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               home: HomeScreen(),
             ),
-            Center(
-              child: Text('Вкладка 4'),
-            ),
+            SearchList(),
             Profile(id, "бухгалтерия") //пример вкладки
           ],
         ),
