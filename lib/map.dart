@@ -18,8 +18,7 @@ class _MapVkldState extends State<MapVkld> {
     var jsonData = json.decode(tstData.body);
     List<Deparament> deparaments = [];
     for (var dpr in jsonData[0]["company"]) {
-      List<Profiles> profiles = [];
-      for (var profile in jsonData[0]["company"][dpr["id"]]["profiles"]) {
+      List<Profiles> profiles = []      for (var profile in jsonData[0]["company"][dpr["id"]]["profiles"]) {
         List<Tasks> tasks = [];
         if (profile["tasks"] != null)
           for (var tsk in profile["tasks"]) {
@@ -59,11 +58,6 @@ class _MapVkldState extends State<MapVkld> {
               return tree(snapshot.data);
             }
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.map),
-      ),
     );
   }
 
