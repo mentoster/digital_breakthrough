@@ -39,13 +39,21 @@
     },
     {
       "name": "cupertino_icons",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.0",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.0",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.0",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
     {
       "name": "curved_navigation_bar",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/curved_navigation_bar-0.3.4",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/curved_navigation_bar-0.3.4",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/curved_navigation_bar-0.3.4",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -57,25 +65,41 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///D:/Program%20Files/flutter/packages/flutter",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/packages/flutter",
+=======
+      "rootUri": "file:///C:/flutter/packages/flutter",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.10"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///D:/Program%20Files/flutter/packages/flutter_test",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/packages/flutter_test",
+=======
+      "rootUri": "file:///C:/flutter/packages/flutter_test",
+>>>>>>> master
       "packageUri": "lib/",
-      "languageVersion": "2.2"
+      "languageVersion": "2.10"
     },
     {
       "name": "http",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.4"
     },
     {
       "name": "http_parser",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.3"
     },
@@ -99,13 +123,21 @@
     },
     {
       "name": "pedantic",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///D:/Program%20Files/flutter/bin/cache/pkg/sky_engine",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/bin/cache/pkg/sky_engine",
+=======
+      "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "1.11"
     },
@@ -147,7 +179,11 @@
     },
     {
       "name": "tree_view",
-      "rootUri": "file:///D:/Program%20Files/flutter/.pub-cache/hosted/pub.dartlang.org/tree_view-0.0.5",
+<<<<<<< HEAD
+      "rootUri": "file:///C:/hack/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/tree_view-0.0.5",
+=======
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/tree_view-0.0.5",
+>>>>>>> master
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
