@@ -4,6 +4,10 @@ class MainPage extends StatefulWidget{
 }
 
 class HomePage extends State<MainPage>{
+  Widget appBarTitle = new Text("Search Sample", style: new TextStyle(color: Colors.white),);
+  Icon actionIcon = new Icon(Icons.search, color: Colors.white,);
+  final key = new GlobalKey<ScaffoldState>();
+  final TextEditingController _searchQuery = new TextEditingController();
   final List<String> name = [ "Программирование", "Финансы", "Отдел кадров", "Кадр отделов", "Да" ];
   final List<String> info = [ "Разработать", "Посчитать", "Нанять", "Отнять", "Нет" ];
   final List<String> date = [ "01.01.2011", "01.01.2011", "01.01.2011", "01.01.2011", "01.01.2011" ];
@@ -12,51 +16,94 @@ class HomePage extends State<MainPage>{
                                   "Вы без отвлекающих факторов сможете объяснить задачу", 
                                   "Еще хуже, если вы рискнете поймать и загрузить подчиненного где-нибудь в коридоре", 
                                   "От каких методов лучше отказаться вообще" ];
-  void add_task(String name, String info, String date,String moreinfo){
+  bool _isSearching;
+  String _searchText = "";
+  List <int> indexpage = [];
+  HomePage() {
+    _searchQuery.addListener(() {
+      if (_searchQuery.text.isEmpty) {
+        setState(() {
+          _isSearching = false;
+          _searchText = "";
+        });
+      }
+      else {
+        setState(() {
+          _isSearching = true;
+          _searchText = _searchQuery.text;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isSearching = false; 
+  }
+  /*void add_task(String name, String info, String date,String moreinfo){
     this.name.add(name);
     this.info.add(info);
     this.date.add(date);
     this.moreinfo.add(moreinfo);
-  }
-  Widget appBarTitle = new Text("Search");
-  Icon actionIcon = new Icon(Icons.search);
+  }*/
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: new AppBar(
-        centerTitle: true,
-        title:appBarTitle,
-        actions: <Widget>[
-          new IconButton(icon: actionIcon,onPressed:(){
-          setState((){
-            if ( this.actionIcon.icon == Icons.search){
-            this.actionIcon = new Icon(Icons.close);
-            this.appBarTitle = new TextField(
-              style: new TextStyle(color: Colors.white,),
-              decoration: new InputDecoration(
-                prefixIcon: new Icon(Icons.search,color: Colors.white),
-                hintText: "Search...",
-                hintStyle: new TextStyle(color: Colors.white)
-              ),
-              
-            );}
-            else {
-              this.actionIcon = new Icon(Icons.search);
-              this.appBarTitle = new Text("Search");
-            }
-          });
-        } ,),]
-      ),
+    return new Scaffold(
+      key: key,
+      appBar: buildBar(context),
         body: Container(
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: Colors.white,
           ),
-          child: ListView.builder(
+          child: new ListView.builder(
             itemBuilder: _buildFruitItem,
-            itemCount: name.length,
+            itemCount: _buildSearchList(),
           ),
         ),
+    );
+  }
+  int _buildSearchList() {
+    if (_searchText.isEmpty) 
+      return name.length;
+    else 
+      for (int i = 0; i < name.length; i++) 
+        if (_searchText == name[i]) 
+          return i+1;
+    return 0;
+        
+    }
+  
+  Widget buildBar(BuildContext context) {
+    return new AppBar(
+        centerTitle: true,
+        title: appBarTitle,
+        actions: <Widget>[
+          new IconButton(icon: actionIcon, onPressed: () {
+            setState(() {
+              if (this.actionIcon.icon == Icons.search) {
+                this.actionIcon = new Icon(Icons.close, color: Colors.white,);
+                this.appBarTitle = new TextField(
+                  controller: _searchQuery,
+                  style: new TextStyle(
+                    color: Colors.white,
+
+                  ),
+                  decoration: new InputDecoration(
+                      prefixIcon: new Icon(Icons.search, color: Colors.white),
+                      hintText: "Search...",
+                      hintStyle: new TextStyle(color: Colors.white)
+                  ),
+                );
+                _handleSearchStart();
+              }
+              else {
+                _handleSearchEnd();
+              }
+            });
+          },),
+        ]
     );
   }
   Widget _buildFruitItem( BuildContext context, int index ){
@@ -133,5 +180,19 @@ class HomePage extends State<MainPage>{
         ),
       ),*/
     );
+  }
+  void _handleSearchStart() {
+    setState(() {
+      _isSearching = true;
+    });
+  }
+  void _handleSearchEnd() {
+    setState(() {
+      this.actionIcon = new Icon(Icons.search, color: Colors.white,);
+      this.appBarTitle =
+      new Text("Search Sample", style: new TextStyle(color: Colors.white),);
+      _isSearching = false;
+      _searchQuery.clear();
+    });
   }
 }
