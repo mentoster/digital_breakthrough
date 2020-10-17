@@ -57,8 +57,8 @@
                             "name": "Валерий Степанищев",
                             "img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
                             "position": "expert",
-                            "phone": "",
-                            "email": "",
+                            "phone": "8(916)-205-35-80",
+                            "email": "Stepanischev_V@mail.ru",
                             "tasks": [
                                 {
                                     "id": 0,
@@ -73,10 +73,10 @@
                         {
                             "id": 2,
                             "name": "Татьяна Поспелова",
-                            "img": "",
+                            "img": "https://runet-id.com/files/photo/39/397723_200.jpg",
                             "position": "tracker",
-                            "phone": "",
-                            "email": "",
+                            "phone": "8(903)-266-18-26",
+                            "email": "pospelova_t@mail.ru",
                             "tasks": [
                                 {
                                     "id": 0,
@@ -91,10 +91,10 @@
                         {
                             "id": 3,
                             "name": "Ирина Гольмгрейн",
-                            "img": "",
+                            "img": "https://runet-id.com/files/photo/8/87215_200.jpg",
                             "position": "expert",
-                            "phone": "",
-                            "email": "",
+                            "phone": "8(925)-322-13-37",
+                            "email": "irina@66.ru",
                             "tasks": [
                                 {
                                     "id": 0,
@@ -109,9 +109,9 @@
                         {
                             "id": 4,
                             "name": "Арина Мальцева",
-                            "img": "",
+                            "img": "https://runet-id.com/files/photo/194/1942122_200.jpg",
                             "position": "expert",
-                            "phone": "",
+                            "phone": "8(988)-777-19-84",
                             "email": "",
                             "tasks": [
                                 {
@@ -135,9 +135,9 @@
                         {
                             "id": 0,
                             "name": "Лилия Олеговна",
-                            "img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+                            "img": "https://content.foto.my.mail.ru/mail/lilik_p/_myphoto/h-1.jpg",
                             "position": "Заместитель руководителя департамента",
-                            "phone": "(473) 212-65-03",
+                            "phone": "8(473)-212-65-03",
                             "email": "lpodoprihina@govvrn.ru",
                             "tasks": [
                                 {
