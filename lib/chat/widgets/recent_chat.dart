@@ -66,7 +66,7 @@ class RecentChats extends StatelessWidget {
                               ),
                               SizedBox(height: 5.0),
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.45,
+                                width: 300,
                                 child: Text(
                                   chat.text,
                                   style: TextStyle(
@@ -102,7 +102,7 @@ class RecentChats extends StatelessWidget {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    'NEW',
+                                    'Новое',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 12.0,
