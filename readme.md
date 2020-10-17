@@ -1,5 +1,6 @@
-<img src="https://raw.githubusercontent.com/badges/shields/master/frontend/images/logo.svg?sanitize=true"
-height="200">
+```
+![Alt-текст](https://avatars1.githubusercontent.com/u/5384215?v=3&s=460 "Орк")
+```
 
 # Добро пожаловать  в наш репозиторий.
 
@@ -7,5 +8,5 @@ height="200">
 
 Мы с моей командой подошли к этому с большой ответсвенностью. Ведь нам самим не хватает такого приложения. Мы решили создать его в соответсвеии с кейсом и своими предпочтениями.
 
-# Идея 
+# Идея
 
