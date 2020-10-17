@@ -1,6 +1,6 @@
-```
-![Alt-текст](https://avatars1.githubusercontent.com/u/5384215?v=3&s=460 "Орк")
-```
+
+
+
 
 # Добро пожаловать  в наш репозиторий.
 
@@ -10,3 +10,6 @@
 
 # Идея
 
+![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/assets/images/graf.png?raw=true)
+
+![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/1.png?raw=true)
