@@ -27,7 +27,7 @@
 # профиль 
 * в профиле вы можете  просматривать задачи, выполненные задачи
 * увидеть информацию  телефоне, почте, должности 
-![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/1.png?raw=true)
+* ![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/1.png?raw=true)
 
 # Чат
 * так же у нас есть чат, только для рабочих процессов. 
