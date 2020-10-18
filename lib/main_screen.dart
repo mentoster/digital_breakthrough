@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               home: HomeScreen(),
             ),
             SearchList(),
-            Profile(id, "бухгалтерия") //пример вкладки
+            Profile(id, "бухгалтерия", true) //пример вкладки
           ],
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:digital_hack/Models/db.dart';
-
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,12 +9,12 @@ class MainPage extends StatefulWidget {
 }
 
 class HomePage extends State<MainPage> {
+  //Ссылка на базу данных и её парсинг
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
-    // print(tstData);
-    var jsn = json.decode(tstData.body);
-    // print(jsonData);
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
+    var jsn = json.decode(utf8.decode(tstData.bodyBytes));
     List<Deparament> deparaments = [];
+
     print(jsn["departments"]);
     var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
@@ -59,6 +58,7 @@ class HomePage extends State<MainPage> {
   String _searchText = "";
   List<int> indexpage = [];
   HomePage() {
+    //Конструктор
     _searchQuery.addListener(() {
       if (_searchQuery.text.isEmpty) {
         setState(() {
@@ -80,15 +80,11 @@ class HomePage extends State<MainPage> {
     _isSearching = false;
   }
 
-  /*void add_task(String name, String info, String date,String moreinfo){
-    this.name.add(name);
-    this.info.add(info);
-    this.date.add(date);
-    this.moreinfo.add(moreinfo);
-  }*/
+  bool alreadyHave = false;
   @override
+
+  //Основной виджет. Содержит объединение базы данных. Содержит основной интерфейс блока "Задачи"
   Widget build(BuildContext context) {
-    bool alreadyHave = false;
     return FutureBuilder(
         future: _getJson(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -99,20 +95,14 @@ class HomePage extends State<MainPage> {
               ),
             );
           } else {
-            // get dara from json
             if (!alreadyHave) {
               for (var dep in snapshot.data) {
-                // print(dep.name);
                 for (var profile in dep.profiles) {
-                  // print(profile.name);
                   for (var tsk in profile.tasks) {
-                    // TODO:
                     name.add(tsk.title);
-                    info.add(dep.profiles[0].name);
+                    info.add(profile.name);
                     moreinfo.add(tsk.body);
                     date.add(tsk.deadline);
-                    // получить цвет
-                    //tsk.color
                   }
                 }
               }
@@ -136,6 +126,7 @@ class HomePage extends State<MainPage> {
         });
   }
 
+  //Метод для строки поиска
   int _buildSearchList() {
     if (_searchText.isEmpty)
       return name.length;
@@ -145,6 +136,7 @@ class HomePage extends State<MainPage> {
     return 0;
   }
 
+  //Виджет строки поиска
   Widget buildBar(BuildContext context) {
     return new AppBar(
         backgroundColor: Colors.green,
@@ -180,9 +172,9 @@ class HomePage extends State<MainPage> {
         ]);
   }
 
+  //Метод определения цвета задачи в зависимости от дедлайна
   Color deadline(String datea) {
     var d = DateTime.now().day;
-
     var p = int.parse(datea[0]);
     p *= 10;
     p += int.parse(datea[1]);
@@ -195,6 +187,7 @@ class HomePage extends State<MainPage> {
       return (Colors.green[100]);
   }
 
+  //Виджет кейсов задач
   Widget _buildFruitItem(BuildContext context, int index) {
     return Center(
       child: Card(
@@ -220,16 +213,21 @@ class HomePage extends State<MainPage> {
               },
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text('Выполнить до: '),
-                Text(date[index]),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Text('#хештег'),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 10.0,
+                    ),
+                    child: Text('#хештег')),
+                Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 10.0,
+                    ),
+                    child: Text('Выполнить до: ' + date[index],
+                        textAlign: TextAlign.right)),
               ],
             ),
           ],
@@ -238,19 +236,38 @@ class HomePage extends State<MainPage> {
     );
   }
 
+  //Виджет заметок для задач (расширенной информации)
   Widget blu(BuildContext context, int index) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: Column(children: [
+          Container(
+              padding: new EdgeInsets.only(top: 50.0),
+              height: 100.0,
+              color: deadline(date[index]),
+              child: Text(name[index])),
+          Container(
             width: 400.0,
             height: 400.0,
-            color: Colors.yellow[100],
+            color: deadline(date[index]),
             padding: new EdgeInsets.only(top: 50.0),
             child: Text(
               moreinfo[index],
               textAlign: TextAlign.start,
               style: TextStyle(fontWeight: FontWeight.bold),
-            )),
+            ),
+          ),
+          Container(
+              height: 100.0,
+              color: deadline(date[index]),
+              padding: new EdgeInsets.only(top: 50.0),
+              child: Row(
+                children: [
+                  Container(child: const Icon(Icons.article_outlined)),
+                  Container(child: Text('Document.docx')),
+                ],
+              )),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -258,32 +275,18 @@ class HomePage extends State<MainPage> {
         },
         child: const Icon(Icons.backspace),
       ),
-      /*body: Container(
-        padding: EdgeInsets.only(top: 100.0, bottom: 100.0),
-        child: Column(
-          children: <Widget>[
-            Center(
-              child: Text(moreinfo[index]),
-            ),
-            Center(
-              child: RaisedButton(
-                onPressed: () {Navigator.pop(context);},
-                child: Text('Назад'),
-              ),
-            ),
-          ],
-        ),
-      ),*/
     );
   }
 
   void _handleSearchStart() {
+    //метод для поиска
     setState(() {
       _isSearching = true;
     });
   }
 
   void _handleSearchEnd() {
+    //метод для поиска
     setState(() {
       this.actionIcon = new Icon(
         Icons.search,

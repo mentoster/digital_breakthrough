@@ -19,13 +19,12 @@ class Profile extends StatelessWidget {
   String number = '8(916)-205-35-80';
   String email = 'NeoMatrix@mos.ru';
   bool isMyProfile;
-  Profile(this.id, this.position) {
-    print("constructor");
-  }
+  Profile(this.id, this.position, this.isMyProfile);
 
+  // get json with data about profile
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
-    var jsn = json.decode(tstData.body);
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
+    var jsn = json.decode(utf8.decode(tstData.bodyBytes));
     List<Deparament> deparaments = [];
     var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
@@ -82,7 +81,14 @@ class Profile extends StatelessWidget {
     );
   }
 
-// card
+// card of profile
+// ██████╗ ██████╗  ██████╗ ███████╗██╗██╗     ███████╗
+// ██╔══██╗██╔══██╗██╔═══██╗██╔════╝██║██║     ██╔════╝
+// ██████╔╝██████╔╝██║   ██║█████╗  ██║██║     █████╗
+// ██╔═══╝ ██╔══██╗██║   ██║██╔══╝  ██║██║     ██╔══╝
+// ██║     ██║  ██║╚██████╔╝██║     ██║███████╗███████╗
+// ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
+
   Card _buildcard(String name, String position, String phoneNumber,
       String email, String urlico) {
     return Card(
@@ -148,8 +154,26 @@ class Profile extends StatelessWidget {
               color: Colors.green[500],
             ),
           ),
+          importApi(isMyProfile)
         ],
       ),
     );
   }
+}
+
+// add logic function
+ListTile importApi(bool isMyProfile) {
+  if (isMyProfile) {
+    return ListTile(
+      title: Text('Импортировать из Trello'),
+      onTap: () {
+        // changeoage(2);
+      },
+      leading: Icon(
+        Icons.link,
+        color: Colors.green[500],
+      ),
+    );
+  } else
+    return ListTile();
 }

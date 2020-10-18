@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:tree_view/tree_view.dart';
 
+// map of
 class MapVkld extends StatefulWidget {
   PageController _controller;
   @override
@@ -16,9 +17,9 @@ class MapVkld extends StatefulWidget {
 class _MapVkldState extends State<MapVkld> {
   // get json with data
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     // print(tstData);
-    var jsn = json.decode(tstData.body);
+    var jsn = json.decode(utf8.decode(tstData.bodyBytes));
     // print(jsonData);
     List<Deparament> deparaments = [];
     var jsonData = jsn["departments"];
@@ -42,6 +43,12 @@ class _MapVkldState extends State<MapVkld> {
     }
     return deparaments;
   }
+//    ████████╗██████╗ ███████╗███████╗
+//    ╚══██╔══╝██╔══██╗██╔════╝██╔════╝
+//       ██║   ██████╔╝█████╗  █████╗
+//       ██║   ██╔══██╗██╔══╝  ██╔══╝
+//       ██║   ██║  ██║███████╗███████╗
+//       ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝
 
   PageController _controller;
   @override
@@ -65,7 +72,15 @@ class _MapVkldState extends State<MapVkld> {
             }
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Image.asset(
+                        'assets/images/graf.png',
+                        fit: BoxFit.cover,
+                      )));
+        },
         backgroundColor: Colors.green,
         child: const Icon(Icons.map),
       ),
@@ -126,7 +141,7 @@ class _MapVkldState extends State<MapVkld> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Profile(id, position),
+                          builder: (context) => Profile(id, position, false),
                         ),
                       );
                     }

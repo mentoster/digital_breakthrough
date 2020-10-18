@@ -3,10 +3,17 @@ import 'package:digital_hack/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// ███████╗████████╗ █████╗ ██████╗ ████████╗
+// ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝
+// ███████╗   ██║   ███████║██████╔╝   ██║
+// ╚════██║   ██║   ██╔══██║██╔══██╗   ██║
+// ███████║   ██║   ██║  ██║██║  ██║   ██║
+// ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
 void main() => runApp(new MaterialApp(
       home: new MyApp(),
     ));
 
+// registration
 class MyApp extends StatelessWidget {
   String _email;
   String _password;

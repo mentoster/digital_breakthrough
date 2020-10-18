@@ -4,6 +4,7 @@ class SearchList extends StatefulWidget {
   _SearchListState createState() => new _SearchListState();
 }
 
+//Основной класс поисковой строки со списком
 class _SearchListState extends State<SearchList> {
   Widget appBarTitle = new Text(
     "Search",
@@ -13,6 +14,7 @@ class _SearchListState extends State<SearchList> {
     Icons.search,
     color: Colors.white,
   );
+  //Списки с информацией заметок
   final key = new GlobalKey<ScaffoldState>();
   final TextEditingController _searchQuery = new TextEditingController();
   final List<String> name = [
@@ -72,10 +74,12 @@ class _SearchListState extends State<SearchList> {
 
   @override
   void initState() {
+    //функция определения нажатия поиска
     super.initState();
     _isSearching = false;
   }
 
+//Основной виджет. Содержит основной интерфейс блока "Совещаний"
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -99,6 +103,7 @@ class _SearchListState extends State<SearchList> {
     );
   }
 
+  //Функция поиска
   int _buildSearchList() {
     if (_searchText.isEmpty)
       return name.length;
@@ -108,6 +113,7 @@ class _SearchListState extends State<SearchList> {
     return 0;
   }
 
+  //Построение поисковой строки, ее дизайн
   Widget buildBar(BuildContext context) {
     return new AppBar(
         centerTitle: true,
@@ -143,6 +149,7 @@ class _SearchListState extends State<SearchList> {
         ]);
   }
 
+  //Виджет создания заметок внутри совещаний
   Widget blu(BuildContext context, int index) {
     return Scaffold(
       body: Center(
@@ -167,6 +174,7 @@ class _SearchListState extends State<SearchList> {
     );
   }
 
+  //Виджет построения карточек с заметками
   Widget _buildNotesItem(BuildContext context, int index) {
     return Center(
         child: Card(
@@ -180,6 +188,7 @@ class _SearchListState extends State<SearchList> {
         children: <Widget>[
           ListTile(
             title: Text(name[index]),
+            subtitle: Text(info[index]),
             onTap: () {
               Navigator.push(
                 context,
@@ -189,9 +198,6 @@ class _SearchListState extends State<SearchList> {
               );
             },
           ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [Expanded(child: Text(info[index]))]),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -214,6 +220,7 @@ class _SearchListState extends State<SearchList> {
     ));
   }
 
+  //функция состояния поиска
   void _handleSearchStart() {
     setState(() {
       _isSearching = true;
