@@ -16,7 +16,7 @@ class MapVkld extends StatefulWidget {
 class _MapVkldState extends State<MapVkld> {
   // get json with data
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     // print(tstData);
     var jsn = json.decode(tstData.body);
     // print(jsonData);

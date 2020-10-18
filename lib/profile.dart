@@ -24,7 +24,7 @@ class Profile extends StatelessWidget {
   }
 
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     var jsn = json.decode(tstData.body);
     List<Deparament> deparaments = [];
     var jsonData = jsn["departments"];

@@ -11,7 +11,7 @@ class MainPage extends StatefulWidget {
 
 class HomePage extends State<MainPage> {
   Future<List<Deparament>> _getJson() async {
-    var tstData = await http.get("https://fakegames.herokuapp.com/");
+    var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     // print(tstData);
     var jsn = json.decode(tstData.body);
     // print(jsonData);
