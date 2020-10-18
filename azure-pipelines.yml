@@ -9,14 +9,7 @@ stages:
   jobs:
   - job: buildFront
     steps:
-
-
-    - task: install-flutter-sdk@0
-      inputs:
-        channel: 'beta'
-    - task: FlutterBuild@0
-      inputs:
-        target: 'web'
-        projectDirectory: '.'
-    - publish: build/web
-      artifact: front-pack
+    - script: |
+        curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_1.23.0-18.1.pre-beta.tar.xz --output flutter.tar.xz
+    # - publish: build/web
+    #   artifact: front-pack
