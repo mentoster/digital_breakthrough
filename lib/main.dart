@@ -13,7 +13,7 @@ void main() => runApp(new MaterialApp(
       home: new MyApp(),
     ));
 
-// registration
+//User Authorization
 class MyApp extends StatelessWidget {
   String _email;
   String _password;
