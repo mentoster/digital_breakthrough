@@ -11,5 +11,7 @@ stages:
     steps:
     - script: |
         curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_1.23.0-18.1.pre-beta.tar.xz --output flutter.tar.xz
+        tar -xf flutter.tar.xz
+        
     # - publish: build/web
     #   artifact: front-pack
