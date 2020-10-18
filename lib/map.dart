@@ -18,9 +18,8 @@ class _MapVkldState extends State<MapVkld> {
   // get json with data
   Future<List<Deparament>> _getJson() async {
     var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
-    // print(tstData);
     var jsn = json.decode(utf8.decode(tstData.bodyBytes));
-    // print(jsonData);
+
     List<Deparament> deparaments = [];
     var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
