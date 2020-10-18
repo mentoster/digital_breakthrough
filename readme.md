@@ -17,8 +17,20 @@
 
 ![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/assets/images/graf.png?raw=true)
 
+# Задачи в виде яблок
+* Представье, что каждое из заметок - яблоко. Чем оно сильнее зреет, чем оно краснее, чем больше хочется его соровать. Чем больше хочется выполнить задание. 
+Задания имеют 3 цвета - зеленый, желиый, красный.  Чем краснее задача - чем ближе её срок выполнения!
+
 
 ![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/unknown.png?raw=true)
 
 # профиль 
+* в профиле вы можете  просматривать задачи, выполненные задачи
+* увидеть информацию  телефоне, почте, должности 
 ![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/1.png?raw=true)
+
+# Чат
+* так же у нас есть чат, только для рабочих процессов. 
+* при создании общего проекта все участники проекта добавляются в чат.
+* всем людям приходят уведомления. 
+![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/notebooks.png?raw=true)
