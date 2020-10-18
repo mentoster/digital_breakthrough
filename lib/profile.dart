@@ -8,9 +8,9 @@ import 'dart:convert';
 import 'package:tree_view/tree_view.dart';
 
 class Profile extends StatelessWidget {
-  //user data
+  //информация о пользователе
   int id = 0;
-  // imagie profile
+  //фотография пользователя
   final AssetImage ico = AssetImage(
     'assets/images/pic.png',
   );
@@ -21,7 +21,7 @@ class Profile extends StatelessWidget {
   bool isMyProfile;
   Profile(this.id, this.position, this.isMyProfile);
 
-  // get json with data about profile
+  //получение информации из json-файла
   Future<List<Deparament>> _getJson() async {
     var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     var jsn = json.decode(utf8.decode(tstData.bodyBytes));
@@ -48,7 +48,7 @@ class Profile extends StatelessWidget {
     return deparaments;
   }
 
-  @override
+  @override //Виджет профиля
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _getJson(),
@@ -161,7 +161,7 @@ class Profile extends StatelessWidget {
   }
 }
 
-// add logic function
+//функция импорта из Trello
 ListTile importApi(bool isMyProfile) {
   if (isMyProfile) {
     return ListTile(

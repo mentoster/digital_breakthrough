@@ -3,7 +3,10 @@
 		{
 			"company": [
 				{
+<<<<<<< HEAD
 				
+=======
+>>>>>>> eaf55c125aa313404c1b5aa0d9c4142a08b409a4
 					"id": 0,
 					"name": "Проект для Digital Прорыва",
 					"img": "",
@@ -11,7 +14,11 @@
 						{
 							"id": 0,
 							"name": "Макаров Дмитрий ",
+<<<<<<< HEAD
 							"img": "https://sun9-61.userapi.com/Ium0pusnb8yNAhJJ1JZiAIV6VcnF3In2Wvi8jg/kQ4A83JXAM0.jpg",
+=======
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+>>>>>>> eaf55c125aa313404c1b5aa0d9c4142a08b409a4
 							"position": "бухгалтер",
 							"phone": "8(916)-205-35-80",
 							"email": "NeoMatrix@mos.ru",
@@ -25,8 +32,30 @@
 									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
 								}
 							]
+<<<<<<< HEAD
 						}
 						
+=======
+						},
+						{
+							"id": 0,
+							"name": "Макаров Дмитрий ",
+							"img": "https://i.pinimg.com/736x/a6/99/be/a699be54cdaaaff16e653ecf4581dc76--john-wick-beautiful-people.jpg",
+							"position": "бухгалтер",
+							"phone": "8(916)-205-35-80",
+							"email": "NeoMatrix@mos.ru",
+							"tasks": [
+								{
+									"id": 0,
+									"deadline": "20.10.2020",
+									"title": "Оформить и разослать приказ о надбавках к зарплате",
+									"tags": "документы",
+									"color": "yellow",
+									"body": " 1.Взять образец приказа\n2.Оформить его на каждого сотрудника\n3.Спросить подпись у каждого сотрудника\n4.Готово!"
+								}
+							]
+						}
+>>>>>>> eaf55c125aa313404c1b5aa0d9c4142a08b409a4
 					]
 				},
 				{
@@ -226,4 +255,8 @@
 			"password": "123456"
 		}
 	]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eaf55c125aa313404c1b5aa0d9c4142a08b409a4
