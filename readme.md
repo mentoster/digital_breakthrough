@@ -13,6 +13,9 @@
 
 ![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/assets/images/graf.png?raw=true)
 
+![Alt-текст](https://github.com/mentoster/digital_breakthrough/blob/master/%D0%9E%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5/screenshots/iphone.png?raw=true)
+
+
 ## Задачи 
 * Представьте, что каждая из заметок - яблоко. Чем оно сильнее зреет, тем оно краснее, тем больше хочется его сорвать. Тем больше хочется выполнить заданий. 
 Задания имеют 3 цвета: зеленый, желтый, красный.  Чем краснее задача - тем ближе её срок выполнения!

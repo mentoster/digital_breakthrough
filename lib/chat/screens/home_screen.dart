@@ -11,7 +11,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    //Виджет списка чатов
     return Scaffold(
+      backgroundColor: Colors.green,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.menu),

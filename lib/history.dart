@@ -4,7 +4,7 @@ class SearchList extends StatefulWidget {
   _SearchListState createState() => new _SearchListState();
 }
 
-//Основной класс поисковой строки со списком
+//Main class of search string
 class _SearchListState extends State<SearchList> {
   Widget appBarTitle = new Text(
     "Search",
@@ -14,12 +14,12 @@ class _SearchListState extends State<SearchList> {
     Icons.search,
     color: Colors.white,
   );
-  //Списки с информацией заметок
+  //Notes information list
   final key = new GlobalKey<ScaffoldState>();
   final TextEditingController _searchQuery = new TextEditingController();
   final List<String> name = [
     "Создание документации",
-    "Обучние",
+    "Обучение",
     "Про курсы",
     "О координации",
     "Про данные"
@@ -74,12 +74,11 @@ class _SearchListState extends State<SearchList> {
 
   @override
   void initState() {
-    //функция определения нажатия поиска
     super.initState();
     _isSearching = false;
   }
 
-//Основной виджет. Содержит основной интерфейс блока "Совещаний"
+// Main Widget. Conntains "meetings" interface
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -103,7 +102,7 @@ class _SearchListState extends State<SearchList> {
     );
   }
 
-  //Функция поиска
+  // Search
   int _buildSearchList() {
     if (_searchText.isEmpty)
       return name.length;
@@ -113,7 +112,6 @@ class _SearchListState extends State<SearchList> {
     return 0;
   }
 
-  //Построение поисковой строки, ее дизайн
   Widget buildBar(BuildContext context) {
     return new AppBar(
         centerTitle: true,
@@ -149,32 +147,73 @@ class _SearchListState extends State<SearchList> {
         ]);
   }
 
-  //Виджет создания заметок внутри совещаний
   Widget blu(BuildContext context, int index) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Заметки'),
+        backgroundColor: Colors.green,
+      ),
       body: Center(
-        child: Container(
-            width: 400.0,
-            height: 400.0,
-            color: Colors.green,
-            padding: new EdgeInsets.only(top: 50.0),
+          child: Column(children: [
+        Container(
+          width: 700.0,
+          height: 70.0,
+          color: Colors.green[50],
+          margin: new EdgeInsets.only(top: 10.0),
+          child: Align(
+            child: Text(
+              name[index],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        Container(
+            width: 700.0,
+            height: 530.0,
+            color: Colors.green[50],
+            margin: new EdgeInsets.only(top: 10.0),
+            padding: new EdgeInsets.only(top: 30.0, left: 10.0),
             child: Text(
               moreinfo[index],
               textAlign: TextAlign.start,
               style: TextStyle(fontWeight: FontWeight.bold),
             )),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
+      ])),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int id) {
+          if (id == 1) {
+            setState(() {
+              name.remove(index);
+              info.remove(index);
+              date.remove(index);
+              moreinfo.remove(index);
+              hash.remove(index);
+            });
+            Navigator.pop(context);
+          }
         },
-        child: Icon(Icons.arrow_back),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.create),
+            label: 'Edit',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.delete),
+            label: 'Delete',
+          ),
+        ],
         backgroundColor: Colors.green,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
       ),
     );
   }
 
-  //Виджет построения карточек с заметками
+  // Build Notes
   Widget _buildNotesItem(BuildContext context, int index) {
     return Center(
         child: Card(
@@ -220,7 +259,7 @@ class _SearchListState extends State<SearchList> {
     ));
   }
 
-  //функция состояния поиска
+  // Search state
   void _handleSearchStart() {
     setState(() {
       _isSearching = true;
