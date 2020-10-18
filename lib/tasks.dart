@@ -9,12 +9,11 @@ class MainPage extends StatefulWidget {
 }
 
 class HomePage extends State<MainPage> {
-  //Ссылка на базу данных и её парсинг
+  // link on data and parcing
   Future<List<Deparament>> _getJson() async {
     var tstData = await http.get("https://files.rtuitlab.ru/dbdigital.json");
     var jsn = json.decode(utf8.decode(tstData.bodyBytes));
     List<Deparament> deparaments = [];
-
     print(jsn["departments"]);
     var jsonData = jsn["departments"];
     for (var dpr in jsonData[0]["company"]) {
@@ -40,7 +39,7 @@ class HomePage extends State<MainPage> {
   }
 
   Widget appBarTitle = new Text(
-    "Search Sample",
+    "Мои задачи",
     style: new TextStyle(color: Colors.white),
   );
   Icon actionIcon = new Icon(
@@ -54,11 +53,23 @@ class HomePage extends State<MainPage> {
   List<String> info = [];
   List<String> date = [];
   List<String> moreinfo = [];
+  final List<String> hash = [
+    "#Zarp",
+    "#Safari",
+    "#Tag",
+    "#Module",
+    "#Hackathon",
+    "#Dima",
+    "#Digital",
+    "#Digital",
+    "#Digital",
+    "#Digital"
+  ];
   bool _isSearching;
   String _searchText = "";
   List<int> indexpage = [];
   HomePage() {
-    //Конструктор
+    // Constructor
     _searchQuery.addListener(() {
       if (_searchQuery.text.isEmpty) {
         setState(() {
@@ -83,7 +94,7 @@ class HomePage extends State<MainPage> {
   bool alreadyHave = false;
   @override
 
-  //Основной виджет. Содержит объединение базы данных. Содержит основной интерфейс блока "Задачи"
+  // The main widget. Contains a database join. Contains the main interface of the "Tasks" block"
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _getJson(),
@@ -110,6 +121,11 @@ class HomePage extends State<MainPage> {
             alreadyHave = true;
             return new Scaffold(
               key: key,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {},
+                child: Icon(Icons.add, color: Colors.white),
+                backgroundColor: Colors.green,
+              ),
               appBar: buildBar(context),
               body: Container(
                 padding: EdgeInsets.all(5),
@@ -126,7 +142,7 @@ class HomePage extends State<MainPage> {
         });
   }
 
-  //Метод для строки поиска
+  // Search string method
   int _buildSearchList() {
     if (_searchText.isEmpty)
       return name.length;
@@ -136,7 +152,7 @@ class HomePage extends State<MainPage> {
     return 0;
   }
 
-  //Виджет строки поиска
+  // Search bar widget
   Widget buildBar(BuildContext context) {
     return new AppBar(
         backgroundColor: Colors.green,
@@ -172,22 +188,22 @@ class HomePage extends State<MainPage> {
         ]);
   }
 
-  //Метод определения цвета задачи в зависимости от дедлайна
+  // Method for determining the task color depending on the deadline
   Color deadline(String datea) {
     var d = DateTime.now().day;
     var p = int.parse(datea[0]);
     p *= 10;
     p += int.parse(datea[1]);
-    if (p - d < 5) {
+    if (p - d < 4) {
       return (Colors.red[100]);
     }
-    if (p - d < 10)
+    if (p - d < 7)
       return (Colors.yellow[100]);
     else
       return (Colors.green[100]);
   }
 
-  //Виджет кейсов задач
+  // Widget for task cases
   Widget _buildFruitItem(BuildContext context, int index) {
     return Center(
       child: Card(
@@ -220,7 +236,7 @@ class HomePage extends State<MainPage> {
                       horizontal: 10.0,
                       vertical: 10.0,
                     ),
-                    child: Text('#хештег')),
+                    child: Text(hash[index])),
                 Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 10.0,
@@ -236,21 +252,28 @@ class HomePage extends State<MainPage> {
     );
   }
 
-  //Виджет заметок для задач (расширенной информации)
+  // Notes widget for tasks (extended information)
   Widget blu(BuildContext context, int index) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: deadline(date[index]),
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          name[index],
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black,
+          ),
+        ),
+      ),
       body: Center(
         child: Column(children: [
           Container(
-              padding: new EdgeInsets.only(top: 50.0),
-              height: 100.0,
-              color: deadline(date[index]),
-              child: Text(name[index])),
-          Container(
-            width: 400.0,
             height: 400.0,
+            width: double.infinity,
             color: deadline(date[index]),
-            padding: new EdgeInsets.only(top: 50.0),
+            padding: new EdgeInsets.only(top: 50.0, left: 10.0),
+            margin: new EdgeInsets.only(top: 10.0),
             child: Text(
               moreinfo[index],
               textAlign: TextAlign.start,
@@ -260,33 +283,74 @@ class HomePage extends State<MainPage> {
           Container(
               height: 100.0,
               color: deadline(date[index]),
-              padding: new EdgeInsets.only(top: 50.0),
+              margin: new EdgeInsets.only(top: 10.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(child: const Icon(Icons.article_outlined)),
-                  Container(child: Text('Document.docx')),
+                  const Icon(
+                    Icons.article_outlined,
+                  ),
+                  Text('Document.docx', textAlign: TextAlign.center),
                 ],
               )),
         ]),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
+      bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontFamily: "Font2",
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontFamily: "Font2",
+        ),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.green,
+        onTap: (int id) {
+          if (id == 0) {
+            name.remove(index);
+            info.remove(index);
+            date.remove(index);
+            moreinfo.remove(index);
+            hash.remove(index);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => (MainPage()),
+              ),
+            );
+          }
         },
-        child: const Icon(Icons.backspace),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.delete),
+            label: 'Удалить задачу2',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.double_arrow_rounded),
+            label: 'Передать задачу',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.download_done_outlined),
+            label: 'Выполнить задачу',
+          ),
+        ],
       ),
     );
   }
 
   void _handleSearchStart() {
-    //метод для поиска
+    // A method for searching
     setState(() {
       _isSearching = true;
     });
   }
 
   void _handleSearchEnd() {
-    //метод для поиска
+    // A method for searching
     setState(() {
       this.actionIcon = new Icon(
         Icons.search,
@@ -301,3 +365,31 @@ class HomePage extends State<MainPage> {
     });
   }
 }
+
+/*class AddTaskTab extends StatefulWidget {
+  @override
+  _AddTaskTabState createState() => _AddTaskTabState();
+}
+
+class _AddTaskTabState extends State<AddTaskTab> {
+  @override
+  Widget build(BuildContext context) {
+    return Scafford(
+
+    );
+  }
+}*/
+
+/*class AddTaskTab extends StatefulWidget {
+  @override
+  _AddTaskTabState createState() => _AddTaskTabState();
+}
+
+class _AddTaskTabState extends State<AddTaskTab> {
+  @override
+  Widget build(BuildContext context) {
+    return Scafford(
+
+    );
+  }
+}*/

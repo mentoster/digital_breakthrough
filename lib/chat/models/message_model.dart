@@ -26,7 +26,7 @@ final User james =
     User(id: 2, name: 'Максим', imageUrl: 'assets/images/james.jpg');
 final User john = User(id: 3, name: 'Влад', imageUrl: 'assets/images/john.jpg');
 final User olivia =
-    User(id: 4, name: 'Дима', imageUrl: 'assets/images/olivia.jpg');
+    User(id: 4, name: 'Лиза', imageUrl: 'assets/images/olivia.jpg');
 final User sam = User(id: 5, name: 'Света', imageUrl: 'assets/images/sam.jpg');
 final User sophia =
     User(id: 6, name: 'Вика', imageUrl: 'assets/images/sophia.jpg');

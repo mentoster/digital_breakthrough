@@ -15,11 +15,13 @@ final Color navIconColor = Colors.white;
 
 var id = 0;
 
+//Navigation bar class
 class _BottomNavBarState extends State<BottomNavBar> {
   int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
+    // Navigation bar widget
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
@@ -46,7 +48,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: Container(
         child: PageView(
           onPageChanged: (int pg) {
-            _page = pg;
+            //  _page = pg;
           },
           controller: _controller, // assign it to PageView
           children: <Widget>[
@@ -62,7 +64,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               home: HomeScreen(),
             ),
             SearchList(),
-            Profile(id, "бухгалтерия", true) //пример вкладки
+            Profile(id, "бухгалтерия", true) // Tab example
           ],
         ),
       ),
