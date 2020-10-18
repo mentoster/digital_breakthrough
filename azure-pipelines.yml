@@ -15,7 +15,7 @@ stages:
         flutter/bin/flutter config --enable-web
         flutter/bin/flutter pub get
         flutter/bin/flutter build web
-        cp -r build/web/deploy/web/
+        cp -r build/web/ deploy/web/
         
     - publish: deploy
       artifact: front-pack
