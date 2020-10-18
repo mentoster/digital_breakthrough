@@ -124,7 +124,7 @@ class Profile extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Написать...'),
+            title: Text('Написать... '),
             onTap: () {
               // changeoage(2);
             },
